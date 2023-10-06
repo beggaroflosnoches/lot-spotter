@@ -1,4 +1,16 @@
-*{
+@property --gradient-angle {
+	syntax: "<angle>";
+	initial-value: 0deg;
+	inherits: false;
+}
+:root {
+	--bg-color: #0f151a;
+	--text-color: #ffffff;
+	--main-color: #f53fa1;
+	--other-color: #00ecff;
+	--h1-font: 4.7rem;
+}
+* {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
@@ -6,20 +18,13 @@
 	list-style: none;
 	font-family: 'Manrope', sans-serif;
 }
-:root{
-	--bg-color: #0f151a;
-	--text-color: #ffffff;
-	--main-color: #f53fa1;
-	--other-color: #00ecff;
-	--h1-font: 4.7rem;
-}
-body{
+body {
 	background: var(--bg-color);
 	color: var(--text-color);
 }
 
 /* Header */
-header{
+header {
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -32,28 +37,29 @@ header{
 	background: rgba(15, 21, 26, 0.9);
 	transition: all ease .55s;
 }
-.logo img{
+.logo img {
 	width: 64px;
 	height: auto;
 }
-.navlist{
+.navlist {
 	display: flex;
 }
-.navlist a{
+.navlist a {
 	font-size: 15px;
 	font-weight: 400;
 	color: var(--text-color);
 	margin: 0 30px;
-	transition: all ease .55s;
+	transition: color ease .55s;
 }
-.navlist a:hover{
+.navlist a:hover {
 	color: var(--other-color);
+	border-bottom: 2px solid var(--other-color);
 }
-.h-right{
+.h-right {
 	display: flex;
 	align-items: center;
 }
-.h-right a{
+.h-right a {
 	margin-right: 30px;
 	font-size: 17px;
 	font-weight: 700;
@@ -61,10 +67,10 @@ header{
 	color: var(--other-color);
 	transition: all ease .55s;
 }
-.h-right a:hover{
+.h-right a:hover { 
 	color: var(--text-color);
 }
-#menu-icon{
+#menu-icon {
 	font-size: 37px;
 	color: var(--text-color);
 	z-index: 2;
@@ -73,10 +79,10 @@ header{
 }
 
 /* Home Section */
-section{
+section {
 	padding: 0 12%;
 }
-.home{
+.home {
 	position: relative;
 	width: 100%;
 	height: 100vh;
@@ -86,11 +92,13 @@ section{
 	gap: 30px;
 	overflow-x: hidden;
 }
-.home-img img{
-	width: 100%;
+.home-img img {
+	width: 650px;
 	height: auto;
+	backdrop-filter: blur(10px);
+	border-radius: 20px;
 }
-.home-text span{
+.home-text span {
 	padding: 11px 18px;
 	background: #4c1432;
 	border-radius: 10px;
@@ -98,14 +106,15 @@ section{
 	font-size: 15px;
 	font-weight: 500;
 	letter-spacing: 1px;
+	box-shadow: 0 0 20px 5px var(--main-color);
 }
-.home-text h1{
+.home-text h1 {
 	font-size: var(--h1-font);
 	font-weight: 800;
 	line-height: 1.3;
 	margin: 22px 0;
 }
-.home-text p{
+.home-text p {
 	width: 100%;
 	max-width: 400px;
 	font-size: 15px;
@@ -119,7 +128,7 @@ section{
     align-items: center;
     flex-wrap: wrap;
 }
-.btn{
+.btn {
     flex-shrink: 0;
     padding: 15px 22px;
     color: var(--bg-color);
@@ -132,12 +141,12 @@ section{
     word-spacing: 5px;
     transition: all ease .55s;
 }
-.btn:hover{
+.btn:hover {
 	border: 1px solid var(--other-color);
 	background: transparent;
 	color: var(--other-color);
 }
-.btn2{
+.btn2 {
 	padding: 20px 0px;
     margin-left: 25px;
     color: var(--other-color);
@@ -147,10 +156,43 @@ section{
     word-spacing: 5px;
     transition: all ease .55s;
 }
-.btn2:hover{
+.btn2:hover {
 	color: var(--text-color);
 }
+.card {
+	width: 900px;
+	aspect-ratio: 1.75 / 1;
+	background: url(img/lot.jpeg);
+	background-size: cover;
+	background-position: center;
+	border-radius: 0.5rem;
+	position: relative;
+}
+.card::before, .card::after {
+	content: " ";
+	position: absolute;
+	inset: -.3rem;
+	z-index: -1;
+	background: conic-gradient(
+		from var(--gradient-angle),
+		var(--main-color),
+		var(--bg-color),
+		var(--other-color),
+		var(--bg-color),
+		var(--main-color)
+	);
+	border-radius: inherit;
+	animation: rotation 20s linear infinite;
+}
+.card::after {
+	filter: blur(1rem);
+}
+@keyframes rotation {
+	0% { --gradient-angle: 0deg; }
+	100% { --gradient-angle: 360deg; }
+}
 
+/* Responsive CSS */
 @media (max-width: 1820px){
 	header{
 		padding: 15px 7%;
@@ -205,10 +247,8 @@ section{
 		width: 100%;
 		max-width: 800px;
 	}
-	.home-img{
-		height: 420px;
-		width: 420px;
-		margin: 20px auto;
+	.card{
+		margin: 90px auto;
 	}
 }
 
