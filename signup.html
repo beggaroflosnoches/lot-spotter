@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LotSpotter</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 
     <!-- Box Icons -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -21,20 +21,20 @@
     <!-- Header -->
     <header>
         <!-- Logo -->
-        <a href="#" class="logo">
-            <img src="img/logo.png">
+        <a href="index.html" class="logo">
+            <img src="/img/logo.png">
         </a>
 
         <!-- Navigation Links -->
         <ul class="navlist">
             <li><a href="index.html">Home</a></li>
-            <li><a href="">Find Parking</a></li>
+            <li><a href="search.html">Find Parking</a></li>
             <li><a href="#">Help</a></li>
         </ul>
 
         <!-- Contact & Menu -->
         <div class="h-right">
-            <a href="#" id="signup-btn">Sign Up</a>
+            <a href="signup.html" id="signup-btn">Sign Up</a>
             <a href="#" id="login-btn">Log In</a>
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
@@ -43,18 +43,14 @@
     <!--- Home --->
 	<section class="home">
         <!-- Home Text -->
-		<div class="home-text">
-			<span>LotSpotter</span>
-			<h1>Search for available parking</h1>
-			<p>Become a member to reserve your parking spot.</p>
-            
-			<div class="main-btn"> 
-				<a href="#" class="btn">Create an account</a>
-				<a href="#" class="btn2">View Parking Lots</a>
-			</div>
+		<div class="signup-container">
+			<h1>Create a LotSpotter Account</h1>
+			<input type="text" placeholder="First Name">
+            <input type="text" placeholder="Last Name"><br>
+            <input type="email" placeholder="Email">
 		</div>
 
     <!-- JavaScript Link -->
-    <script src="script.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 </html>
