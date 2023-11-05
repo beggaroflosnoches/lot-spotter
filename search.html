@@ -41,9 +41,9 @@
     </header>
 
     <!--- Home --->
-	<section class="search">
+	<section class="body-container">
         <!-- Home Text -->
-		<div class="home-text">
+		<div class="body-text">
 			<h1>Enter Destination</h1>
             <!-- Search input -->
             <input id="searchTextField" class="controls" type="text" placeholder="Address, Place, City, or Venue"><br><br><br>
@@ -129,11 +129,10 @@
                 if (place.name) {
                     content += '<div class="infowindow-title">' + place.name + '</div>';
                 }
-
+                // Info Window Content
                 content += '<span style="color: var(--bg-color);">Available Spaces:</span> 3<br>';
-                content += '<span style="color: var(--bg-color);">Price:</span> $12.99<br><br>';
-                content += '<a href="places.html">Reserve a spot</a>';
-
+                content += '<span style="color: var(--bg-color);">Price:</span> $12.99 per day<br><br>';
+                content += '<a href="lot.html"><b>Reserve a spot</b></a>';
 
                 content += '</div>';
                 
