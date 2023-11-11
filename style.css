@@ -182,7 +182,7 @@ section {
 .card {
 	width: 900px;
 	aspect-ratio: 1.75 / 1;
-	background: url(/img/lot.png);
+	background: url(lot.png);
 	background-size: cover;
 	background-position: center;
 	border-radius: 1rem;
