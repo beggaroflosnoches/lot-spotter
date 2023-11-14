@@ -2,7 +2,7 @@
 const selectedSpaceElement = document.getElementById('selected-space');
 const noneTextElement = selectedSpaceElement.querySelector('.selected-text');
 noneTextElement.innerHTML = 'None';
-noneTextElement.style.color = 'var(--main-color)';
+noneTextElement.style.color = 'var(--secondary-color)';
 
 const spaceElements = document.querySelectorAll('.space');
 
@@ -23,7 +23,7 @@ spaceElements.forEach((space) => {
             const selectedText = space.querySelector('h6').textContent;
 
             // Update selected  text
-            noneTextElement.style.color = 'var(--main-color)';
+            noneTextElement.style.color = 'var(--secondary-color)';
             noneTextElement.innerHTML = selectedText;
         }
     });
