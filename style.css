@@ -69,15 +69,6 @@ header {
 .h-right a:hover { 
 	color: var(--text-color);
 }
-#signup-btn {
-	font-size: 17px;
-	font-weight: 700;
-	color: var(--main-color);
-	transition: all ease .55s;
-}
-#signup-btn:hover {
-	color: var(--text-color);
-}
 
 #menu-icon {
 	font-size: 37px;
