@@ -107,16 +107,6 @@ section {
 	backdrop-filter: blur(10px);
 	border-radius: 20px;
 }
-#span-ls {
-	padding: 11px 18px;
-	background: #4c1432;
-	border-radius: 10px;
-	color: var(--secondary-color);
-	font-size: 15px;
-	font-weight: 500;
-	letter-spacing: 1px;
-	box-shadow: 0 0 20px 5px var(--secondary-color);
-}
 .body-text h1 {
 	font-size: var(--h1-font);
 	font-weight: 800;
@@ -131,6 +121,17 @@ section {
 	color: var(--text-color);
 	line-height: 30px;
 	margin-bottom: 35px;
+}
+.body-text i{
+	color: var(--main-color);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 40px;
+	border-radius: 12px;
+	margin-right: 18px;
+	margin-bottom: 30px;
+	transition: all ease .55s;
 }
 .main-btn {
     display: flex;
@@ -170,6 +171,9 @@ section {
 	color: var(--text-color);
 	border-bottom: 2px solid var(--main-color);
 }
+#contact-btn {
+	color: var(--secondary-color);
+}
 .card {
 	width: 900px;
 	aspect-ratio: 1.75 / 1;
@@ -203,6 +207,24 @@ section {
 	100% { --gradient-angle: 360deg; }
 }
 
+/* Contact Page */
+#contact-email {
+	font-weight: 700;
+	color: var(--secondary-color);
+}
+
+/* About Page */
+#about-content {
+	margin-left: 15%;
+	margin-top: 5%;
+}
+.team-member a{
+	color: var(--main-color);
+}
+.team-role {
+	color: var(--secondary-color);
+}
+
 /* Search Page */
 #searchTextField {
 	padding: 10px 10px;
@@ -221,7 +243,7 @@ section {
     color: var(--secondary-color);
 }
 
-/* Page Header */
+/* Lot Page */
 .lot-container {
     display: flex;
     align-items: center;
@@ -283,6 +305,41 @@ section {
     flex-shrink: 0;
     text-align: right; 
     margin-left: 50px; 
+}
+
+/* Help Page */
+.ri-customer-service-fill {
+	font-size: 400px;
+	margin-left: -700px;
+}
+/* Payment Confirmation Page */
+.clock {
+	color: white;
+}
+
+/* Sucess Page */
+#success-check {
+	color: #00ff81;
+	font-size: 400px;
+}
+/* Footer */
+.footer-container {
+	margin-left: 30px;
+}
+
+/* Additional style for fade-in effect */
+.fade-in {
+	opacity: 0;
+	animation: fadeInAnimation 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeInAnimation {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 /* Responsive CSS */

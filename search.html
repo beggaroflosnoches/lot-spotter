@@ -28,20 +28,21 @@
         <!-- Navigation Links -->
         <ul class="navlist">
             <li><a href="index.html">Home</a></li>
-            <li><a href="search.html">Find Parking</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="search.html">Services</a></li>
+            <li><a href="help.html">Help</a></li>
         </ul>
 
-        <!-- Contact & Menu -->
+        <!-- Signup & Menu -->
         <div class="h-right">
-            <a href="https://lotspotter.auth.us-east-2.amazoncognito.com/logout?client_id=rfdvj8brsodes44ggg3so3tfd&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Flotspotter.s3.us-east-2.amazonaws.com%2Flot-spotter-main%2Findex.html" id="signout-btn">Sign Out</a>
+            <a href="contact.html" id="contact-btn">Contact</a>
+            <a href="https://lotspotter.auth.us-east-2.amazoncognito.com/login?client_id=rfdvj8brsodes44ggg3so3tfd&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Flotspotter.s3.us-east-2.amazonaws.com%2Flot-spotter-main%2Findex.html" id="signout-btn">Sign Out</a>
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
     </header>
 
-    <!--- Home --->
-	<section class="body-container">
-        <!-- Home Text -->
+    <!--- Search Content --->
+	<section class="body-container fade-in">
 		<div class="body-text">
 			<h1>Enter Destination</h1>
             <!-- Search input -->
@@ -51,12 +52,26 @@
 		</div>
     </section>
 
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="social">
+                <!-- socials?? -->
+            </div>
+            <div class="copyright">
+                &copy; 2023 LotSpotter. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
     <!-- JavaScript Link -->
     <script src="script.js"></script>
+
     <!-- Google Maps API -->
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsnky6vTpqinLjzCbUkq5NAntpePR9dwY&libraries=places&callback=initMap">
     </script>
+
     <!-- Initialization and Autocomplete -->
     <script>
         var map;
