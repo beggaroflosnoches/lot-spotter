@@ -30,7 +30,7 @@ spaceElements.forEach((space) => {
 });
 
 // Retrieve data from database
-const { DynamoDBClient, ScanCommand } = require("@aws-sdk/client-dynamodb");
+import { DynamoDBClient, ScanCommand } from "@aws-sdk/client-dynamodb-browser";
 
 const dbClient = new DynamoDBClient({ region: 'us-east-2' });
 
