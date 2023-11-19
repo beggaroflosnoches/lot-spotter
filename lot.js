@@ -30,36 +30,36 @@ spaceElements.forEach((space) => {
 });
 
 // Retrieve data from database
-// const { DynamoDBClient, ScanCommand } = require("@aws-sdk/client-dynamodb");
+const { DynamoDBClient, ScanCommand } = require("@aws-sdk/client-dynamodb");
 
-// const dbClient = new DynamoDBClient({ region: 'us-east-2' });
+const dbClient = new DynamoDBClient({ region: 'us-east-2' });
 
-// const param = {
-//     TableName: 'lot1',
-// };
+const param = {
+    TableName: 'lot1',
+};
 
-// const command = new ScanCommand(param);
+const command = new ScanCommand(param);
 
-// dbClient.send(command)
-//     .then((data) => {
-//         const items = data.Items;
-//         items.forEach((item, index) => {
-//             const id = item.space_id.N;
-//             const hasCar = item.is_full.B;
+dbClient.send(command)
+    .then((data) => {
+        const items = data.Items;
+        items.forEach((item, index) => {
+            const id = item.space_id.N;
+            const hasCar = item.is_full.B;
 
-//             console.log(`${id},${hasCar}`);
-//         });
-//     })
-//     .catch((error) => {
-//         console.error("Error retrieving items:", error);
-//     });
+            console.log(`${id},${hasCar}`);
+        });
+    })
+    .catch((error) => {
+        console.error("Error retrieving items:", error);
+    });
 
 // Example data
-const databaseData = [
-    { id: 0, hasCar: true },
-    { id: 3, hasCar: true },
-    { id: 4, hasCar: true },
-];
+// const databaseData = [
+//     { id: 0, hasCar: true },
+//     { id: 3, hasCar: true },
+//     { id: 4, hasCar: true },
+// ];
 
 // Function to update HTML elements based on databaseData
 function updateHTMLFromDatabase() {
