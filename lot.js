@@ -29,65 +29,59 @@ spaceElements.forEach((space) => {
     });
 });
 
-// Retrieve data from database
-import { DynamoDBClient, ScanCommand } from "@aws-sdk/client-dynamodb-browser";
+// Fetch data from Lambda function
+async function fetchData() {
+    try {
+        const response = await fetch("https://50l9bkj7vc.execute-api.us-east-2.amazonaws.com/dev");
+        const responseData = await response.json();
+        
+        const data = JSON.parse(responseData.body);
+        console.log("Fetched data:", data);
 
-const dbClient = new DynamoDBClient({ region: 'us-east-2' });
-
-const param = {
-    TableName: 'lot1',
-};
-
-const command = new ScanCommand(param);
-
-dbClient.send(command)
-    .then((data) => {
-        const items = data.Items;
-        items.forEach((item, index) => {
-            const id = item.space_id.N;
-            const hasCar = item.is_full.B;
-
-            console.log(`${id},${hasCar}`);
-        });
-    })
-    .catch((error) => {
-        console.error("Error retrieving items:", error);
-    });
-
-// Example data
-// const databaseData = [
-//     { id: 0, hasCar: true },
-//     { id: 3, hasCar: true },
-//     { id: 4, hasCar: true },
-// ];
-
-// Function to update HTML elements based on databaseData
-function updateHTMLFromDatabase() {
-    databaseData.forEach((item) => {
-        const id = item.id; 
-        const hasCar = item.hasCar;
-
-        // Match id
-        const targetSpaceElement = document.querySelector(`.space[data-space-id="${id}"]`);
-
-        if (targetSpaceElement) {
-            // Update data-has-car attribute
-            targetSpaceElement.setAttribute('data-has-car', hasCar);
-
-            const carImg = targetSpaceElement.querySelector('img');
-            const lotHeader = targetSpaceElement.querySelector('h6');
-
-            // Update display
-            if (hasCar) {
-                carImg.style.display = 'block'; // Show car
-                lotHeader.style.display = 'none'; // Hide text
-            } else {
-                carImg.style.display = 'none'; // Hide car
-                lotHeader.style.display = 'block'; // Show text
-            }
+        if (Array.isArray(data)) {
+            // If the data is already in an array format, proceed to update the HTML
+            updateHTMLFromDatabase(data);
+        } else {
+            console.log("Unhandled data format. Data:", data);
         }
-    });
+
+    } catch (error) {
+        console.error("Error retrieving data from the API:", error);
+    }
 }
 
-// Call function
-updateHTMLFromDatabase();
+// Update HTML based on DynamoDB
+function updateHTMLFromDatabase(databaseData) {
+    console.log("Updating HTML with database data:", databaseData);
+    if (Array.isArray(databaseData)) {
+        databaseData.forEach((item) => {
+            const id = item.space_id; 
+            const hasCar = item.is_full;
+
+            // Match id
+            const targetSpaceElement = document.querySelector(`.space[data-space-id="${id}"]`);
+
+            if (targetSpaceElement) {
+                // Update data-has-car attribute
+                targetSpaceElement.setAttribute('data-has-car', hasCar);
+
+                const carImg = targetSpaceElement.querySelector('img');
+                const lotHeader = targetSpaceElement.querySelector('h6');
+
+                // Update display
+                if (hasCar) {
+                    carImg.style.display = 'block'; // Show car
+                    lotHeader.style.display = 'none'; // Hide text
+                } else {
+                    carImg.style.display = 'none'; // Hide car
+                    lotHeader.style.display = 'block'; // Show text
+                }
+            }
+        });
+    } else {
+        console.error('Data retrieved is not in the expected format (not an array).');
+    }
+}
+
+// Call fetchData function
+fetchData();
